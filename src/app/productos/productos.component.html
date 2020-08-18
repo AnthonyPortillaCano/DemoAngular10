@@ -1,0 +1,39 @@
+<div class="example-container mat-elevation-z8"> 
+     <h2>Lista de Productos</h2>
+     <div class="example-loading-shade" *ngIf="isLoadingResults">
+         <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+     </div>
+     <div class="mat-elevation-z8">
+        <a mat-flat-button color="primary" [routerLink]="['/AgregarProductos']"><mat-icon>add</mat-icon>Agregar Productos</a>
+        <button type="button" class="btn btn-primary" (click)="CerrarSesion()">Cerrar Sesion</button>
+     </div>
+    <table mat-table [dataSource]="data" class="example-table" matSort  matSortActive="name" matSortDisableClear matSortDirection="asc">
+
+          <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef>Id</th>
+              <td mat-cell *matCellDef="let row">{{row.id}}</td>
+          </ng-container>
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let row">{{row.nombre}}</td>
+        </ng-container>
+        <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef>Precio</th>
+            <td mat-cell *matCellDef="let row">{{row.precio}}</td>
+        </ng-container>
+        <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef>Tipo</th>
+            <td mat-cell *matCellDef="let row">{{row.tipo}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/productosDetalle/',row.id]"></tr>
+    </table>
+
+
+
+
+
+
+
+
+</div>

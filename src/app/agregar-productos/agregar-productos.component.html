@@ -1,0 +1,37 @@
+<div class="example-container mat-elevation-z8">
+       <h2>Agregar Productos</h2>
+       <div class="example-loading-shade" *ngIf="isLoadingResults">
+             <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+       </div>
+       <div class="button-row">
+         <a mat-flat-button color="primary" [routerLink]="['/productos']"><mat-icon>list</mat-icon></a>
+       </div>
+       <mat-card class="example-card">
+           <form [formGroup]="casesForm" (ngSubmit)="onFormSubmit()">
+                <mat-form-field class="example-full-width">
+                       <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="Nombre" formControlName="nombre" [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!casesForm.get('nombre').valid && casesForm.get('nombre').touched" >Ingresa el Nombre</span>
+                </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Precio</mat-label>
+                     <input matInput type="number" placeholder="Precio" formControlName="precio" [errorStateMatcher]="matcher">
+             <mat-error>
+                 <span *ngIf="!casesForm.get('precio').valid && casesForm.get('precio').touched" >Ingresa el Precio</span>
+             </mat-error>
+             </mat-form-field>
+             <mat-form-field class="example-full-width">
+                <mat-label>Tipo</mat-label>
+                 <input matInput placeholder="Tipo" formControlName="tipo" [errorStateMatcher]="matcher">
+         <mat-error>
+             <span *ngIf="!casesForm.get('tipo').valid && casesForm.get('tipo').touched" >Ingresa el Tipo</span>
+         </mat-error>
+         </mat-form-field>
+         <div class="button-row">
+             <button type="submit" [disabled]="!casesForm.valid" mat-flat-button color="primary"><mat-icon>add</mat-icon>Guardar</button>
+         </div>
+           </form>
+       </mat-card>
+</div>
